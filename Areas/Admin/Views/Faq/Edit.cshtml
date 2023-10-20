@@ -1,0 +1,70 @@
+﻿@model Models.EF.Faq
+@{
+    ViewBag.Title = "Sửa thông tin FAQ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body">
+
+        @using (Html.BeginForm("Edit", "Faq", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true);
+
+            <div class="form-horizontal">
+                <h4>Sản phẩm</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "form-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Answer, htmlAttributes: new { @class = "form-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Answer, new { htmlAttributes = new { @class = "form-control" }, @id = "txtAns" })
+                        @Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-primary">SỬA THÔNG TIN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Quay lại danh sách", "Index")
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        //$('#btnSelectImage').on('click', function (e) {
+        //    e.preventDefault();
+        //    var finder = new CKFinder();
+        //    finder.selectActionFunction = function (url) {
+        //        $('#txtImage').val(url);
+        //    };
+        //    finder.popup();
+        //})
+
+        var editor = CKEDITOR.replace('txtAns', {
+            customConfig: '/Content/Admin/ckeditor/config.js'
+        })
+
+    </script>
+}
+

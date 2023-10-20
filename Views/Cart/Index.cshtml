@@ -1,0 +1,96 @@
+﻿@model IEnumerable<KeyShop.Models.Cart>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h1>Giỏ hàng</h1>
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li class="text-black fw-normal">Giỏ hàng</li>
+                <li>Thông tin giỏ hàng</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="cart-area ptb-100">
+    <div class="container">
+
+        <div class="cart-table table-responsive">
+            @if (Model != null && Model.Any())
+            {
+                <form>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Sản phẩm</th>
+                                <th scope="col">Số lượng</th>
+                                <th scope="col">Giá</th>
+                                <th scope="col">Thành tiền</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                var price = @item.product.PriceSale > 0 ? @item.product.PriceSale.Value : @item.product.Price;
+                                <tr>
+                                    <td class="product-thumbnail">
+                                        <a href="products-details.html">
+                                            <img src="@item.product.Images" alt="item">
+                                            <h3>@item.product.Name</h3>
+                                        </a>
+                                    </td>
+                                    <td>@price.ToString("N0")đ</td>
+                                    <td class="product-quantity">
+                                        <div class="input-counter">
+                                            <span class="minus-btn"><i class='bx bx-minus'></i></span>
+                                            <input type="text" value="@item.Quantity" id="productQuantity">
+                                            <span class="plus-btn"><i class='bx bx-plus'></i></span>
+                                        </div>
+                                    </td>
+                                    <td>@KeyShop.Common.CommonHelper.ConvertMoney(item.Quantity * price)đ</td>
+                                    <td><a href="cart.html" class="remove"><i class='bx bx-trash'></i></a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="cart-buttons">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 col-sm-12 col-md-7">
+                                <div class="shopping-coupon-code">
+                                    <input type="text" class="form-control" placeholder="Coupon code" name="coupon-code" id="coupon-code">
+                                    <button type="submit">Áp mã giảm giá</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-sm-12 col-md-5 text-end">
+                                <a href="/gio-hang" class="default-btn"><span>Cập nhật giỏ hàng</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-totals">
+                        <ul>
+                            <li>Subtotal <span>$800.00</span></li>
+                            <li>Shipping <span>$30.00</span></li>
+                            <li>Total <span>$830.00</span></li>
+                        </ul>
+                        <a href="checkout.html" class="default-btn"><span>Proceed to Checkout</span></a>
+                    </div>
+                </form>
+            }
+            else
+            {
+                <div class="justify-content-between">
+                    <div class="col-lg-7 col-sm-12 col-md-7">
+                        <h3>Bạn không có sản phẩm nào trong giỏ hàng.</h3>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

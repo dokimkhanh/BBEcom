@@ -1,0 +1,150 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+}
+
+<div class="search-overlay">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="search-overlay-layer"></div>
+            <div class="search-overlay-layer"></div>
+            <div class="search-overlay-layer"></div>
+            <div class="search-overlay-close">
+                <span class="search-overlay-close-line"></span>
+                <span class="search-overlay-close-line"></span>
+            </div>
+            <div class="search-overlay-form">
+                <form>
+                    <input type="text" class="input-search" placeholder="Enter your keywords...">
+                    <button type="submit"><i class='bx bx-search'></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="main-banner-area">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12">
+                <div class="main-banner-content">
+                    <span class="sub-title">Welcome to Patoi</span>
+                    <h1>We provide best pet products</h1>
+                    <p>Save 20% off your first order</p>
+                    <a href="shop-grid.html" class="default-btn"><span>Shop Now</span></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="main-banner-image">
+                    <img src="/Content/Client/img/banner/banner1.png" alt="banner-image">
+                    <img src="/Content/Client/img/banner/banner2.png" alt="banner-image">
+                    <img src="/Content/Client/img/banner/banner3.png" alt="banner-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="offer-area pt-50 pb-75">
+</div>
+
+
+<div class="categories-area pb-75">
+    <div class="container">
+        <div class="section-title">
+            <h2>Danh mục sản phẩm</h2>
+        </div>
+        <div class="categories-slides owl-carousel owl-theme">
+
+            @{ Html.RenderAction("Categories", "Home"); }
+        </div>
+    </div>
+</div>
+
+
+<div class="products-area pb-75">
+    <div class="container">
+        <div class="section-title">
+            <h2>Sản phẩm mới</h2>
+        </div>
+        <div class="row justify-content-center">
+            @{Html.RenderAction("ListProduct", "Home"); }
+        </div>
+    </div>
+</div>
+
+<div class="offer-area pb-75">
+    <div class="container">
+        <div class="single-offer-box">
+            <a href="shop-grid.html" class="d-block">
+                <img src="/Content/Client/img/offer/offer6.jpg" alt="offer-image">
+            </a>
+        </div>
+    </div>
+</div>
+ss
+
+<div class="brands-area pb-75">
+    <div class="container">
+        <div class="section-title">
+            <h2>Thương hiệu lớn</h2>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
+                <div class="single-brands-box">
+                    <a href="shop-grid.html" class="d-block">
+                        <img src="https://i.imgur.com/17muBgb.png" alt="brands">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
+                <div class="single-brands-box">
+                    <a href="shop-grid.html" class="d-block">
+                        <img src="https://i.imgur.com/7TL6J8b.png" alt="brands">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
+                <div class="single-brands-box">
+                    <a href="shop-grid.html" class="d-block">
+                        <img src="https://i.imgur.com/07OgAEx.png" alt="brands">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
+                <div class="single-brands-box">
+                    <a href="shop-grid.html" class="d-block">
+                        <img src="https://i.imgur.com/SsKdm4Z.png" alt="brands">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
+                <div class="single-brands-box">
+                    <a href="shop-grid.html" class="d-block">
+                        <img src="/Content/Client/img/brands/brands5.png" alt="brands">
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-4">
+                <div class="single-brands-box">
+                    <a href="shop-grid.html" class="d-block">
+                        <img src="/Content/Client/img/brands/brands6.png" alt="brands">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="blog-area pt-100 pb-75">
+    <div class="container">
+        <div class="section-title">
+            <h2>Tin tức</h2>
+        </div>
+        <div class="row justify-content-center">
+            @{Html.RenderAction("NewsPost", "Home");}
+        </div>
+    </div>
+</div>

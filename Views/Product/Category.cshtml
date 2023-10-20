@@ -1,0 +1,52 @@
+﻿@model Models.EF.Category
+@{
+    ViewBag.Title = $"Danh mục {Model.Name}";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h1>@Model.Name</h1>
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li class="text-black fw-normal">Danh mục</li>
+                <li>@Model.Name</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="products-area ptb-100">
+    <div class="container">
+        <div class="patoi-grid-sorting row align-items-center">
+            <div class="col-lg-6 col-md-6 result-count">
+                <div class="d-flex align-items-center">
+                    @*<a href="#" data-bs-toggle="modal" data-bs-target="#productsFilterModal" class="sidebar-filter"><i class='bx bx-filter-alt'></i> Lọc</a>*@
+                    <p>Đang có <span class="count">@ViewBag.CategoryProductCount</span> mã có sẵn dành cho bạn</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 ordering">
+                <div class="select-box">
+                    <label>Sắp xếp:</label>
+                    <select>
+                        <option>Default</option>
+                        <option>Popularity</option>
+                        <option>Latest</option>
+                        <option>Price: low to high</option>
+                        <option>Price: high to low</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+
+            @{ Html.RenderAction("Products", "Product"); }
+
+            
+        </div>
+    </div>
+</div>
+

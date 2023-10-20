@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyShop", "KeyShop.csproj", "{1DA4C284-CF5E-4190-8780-7F28D14CBB2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "..\Models\Models.csproj", "{979B8E14-23DE-4B43-ABEF-5F6A44A07F5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DA4C284-CF5E-4190-8780-7F28D14CBB2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA4C284-CF5E-4190-8780-7F28D14CBB2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA4C284-CF5E-4190-8780-7F28D14CBB2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA4C284-CF5E-4190-8780-7F28D14CBB2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{979B8E14-23DE-4B43-ABEF-5F6A44A07F5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{979B8E14-23DE-4B43-ABEF-5F6A44A07F5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{979B8E14-23DE-4B43-ABEF-5F6A44A07F5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{979B8E14-23DE-4B43-ABEF-5F6A44A07F5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {42DF31DD-C4EF-4D8F-AA72-A8E6CDA0D80C}
+	EndGlobalSection
+EndGlobal

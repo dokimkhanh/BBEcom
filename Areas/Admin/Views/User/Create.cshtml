@@ -1,0 +1,46 @@
+﻿@model Models.EF.Account
+
+@{
+    ViewBag.Title = "Thêm mới";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">Thông tin danh mục</h5>
+        @using (Html.BeginForm("Create", "User", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "form-label col-md-2" })
+                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-label col-md-2" })
+                @Html.TextBoxFor(model => model.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-label col-md-2" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "form-label col-md-2" })
+                @Html.DropDownListFor(model => model.Status, new List<SelectListItem>()
+                {
+                   new SelectListItem(){Selected = true,Text = "Hiển thị", Value = "true"},
+                   new SelectListItem(){ Text = "Ẩn", Value = "false"},
+                }, new { @class = "form-select form-control" })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+            <button type="submit" class="btn btn-primary">THÊM MỚI</button>
+        }
+        @Html.ActionLink("Quay lại danh sách", "Index", new { @class = "btn btn-primary" })
+
+    </div>
+</div>

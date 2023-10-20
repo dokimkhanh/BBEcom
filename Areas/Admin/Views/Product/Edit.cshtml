@@ -1,0 +1,119 @@
+﻿@model Models.EF.Product
+
+@{
+    ViewBag.Title = "Sửa sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+
+        @using (Html.BeginForm("Edit", "Product", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Sản phẩm</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "form-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.CategoryId, ViewBag.productCategoryID as SelectList, "Chọn danh mục", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row col-md-12">
+                    <div class="mb-3 col-md-10">
+
+                        @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "form-label col-md-2" })
+                        <div class="row d-flex">
+                            <div class="col-md-11">
+                                @Html.EditorFor(model => model.Images, new { htmlAttributes = new { @class = "form-control", @id = "txtImage", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-1">
+                                <a href="#" class="btn btn-primary" id="btnSelectImage">Chọn</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "form-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.PriceSale, htmlAttributes: new { @class = "form-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PriceSale, new { htmlAttributes = new { @class = "form-control", @placeholder = "0 = Không giảm giá" } })
+                        @Html.ValidationMessageFor(model => model.PriceSale, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "form-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" }, @id = "txtDetail" })
+                        @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "form-label col-md-2" })
+                    @Html.DropDownListFor(model => model.Status, new List<SelectListItem>()
+                    {
+                       new SelectListItem(){Selected = true,Text = "Hiển thị", Value = "true"},
+                       new SelectListItem(){ Text = "Ẩn", Value = "false"},
+                    }, new { @class = "form-select form-control" })
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="row">
+                    <div class="mb-3">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-primary">SỬA SẢN PHẨM</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+            };
+            finder.popup();
+        })
+
+        var editor = CKEDITOR.replace('txtDetail', {
+            customConfig: '/Content/Admin/ckeditor/config.js'
+        })
+    </script>
+}

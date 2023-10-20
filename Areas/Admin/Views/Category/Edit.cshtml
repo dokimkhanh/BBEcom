@@ -1,0 +1,66 @@
+﻿@model Models.EF.Category
+
+@{
+    ViewBag.Title = "Sửa thông tin danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">Sửa thông tin danh mục</h5>
+        @using (Html.BeginForm("Edit", "Category", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-label col-md-2" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="row col-md-12">
+                <div class="mb-3 col-md-10">
+
+                    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "form-label col-md-2" })
+                    <div class="row d-flex">
+                        <div class="col-md-11">
+                            @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @id = "txtImage", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-1">
+                            <a href="#" class="btn btn-primary" id="btnSelectImage">Chọn</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="mb-3">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "form-label col-md-2" })
+                @Html.DropDownListFor(model => model.Status, new List<SelectListItem>()
+                {
+                   new SelectListItem(){Selected = true,Text = "Hiển thị", Value = "true"},
+                   new SelectListItem(){ Text = "Ẩn", Value = "false"},
+                }, new { @class = "form-select form-control" })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+            <button type="submit" class="btn btn-primary">SỬA DANH MỤC</button>
+        }
+        @Html.ActionLink("Quay lại danh sách", "Index", new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+
+@section scripts {
+    <script>
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+            };
+            finder.popup();
+        })
+
+    </script>
+}
