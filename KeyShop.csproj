@@ -157,6 +157,7 @@
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\CommonHelper.cs" />
     <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Common\VnPayLibrary.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
