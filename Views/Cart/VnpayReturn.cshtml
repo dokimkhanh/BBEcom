@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Kết quả thanh toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h1>Thông báo</h1>
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="checkout-area ptb-100">
+    <div class="container">
+        <div class="user-actions">
+            <span>Kiểm tra thông tin đơn hàng <a href="/trang-ca-nhan/don-hang">Nhấn vào đây</a></span>
+        </div>
+        <div class="col-lg-12 col-sm-12 d-flex justify-content-center">
+            <div class="row">
+                @if (ViewBag.ThanhToanThanhCong != null)
+                {
+                    <h3>Bạn đã thanh toán thành công @KeyShop.Common.CommonHelper.ConvertMoney(int.Parse(ViewBag.ThanhToanThanhCong))đ!</h3>
+                }
+                <h4>@ViewBag.InnerText</h4>
+            </div>
+        </div>
+    </div>
+</div>

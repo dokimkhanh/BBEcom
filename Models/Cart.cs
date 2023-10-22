@@ -12,5 +12,9 @@ namespace KeyShop.Models
         public Product product { get; set; }
         public int Quantity { get; set; }
 
+        public static implicit operator Cart(List<Cart> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
