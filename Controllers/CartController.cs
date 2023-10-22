@@ -1,5 +1,6 @@
 ﻿using KeyShop.Common;
 using KeyShop.Models;
+using Microsoft.Ajax.Utilities;
 using Models.DAO;
 using Models.EF;
 using System;
@@ -125,7 +126,7 @@ namespace KeyShop.Controllers
             if (cart != null)
             {
                 list = (List<Cart>)cart;
-                
+
                 foreach (var item in list)
                 {
                     int money = item.product.PriceSale > 0 ? item.product.PriceSale.GetValueOrDefault(0) : item.product.Price;
@@ -203,6 +204,33 @@ namespace KeyShop.Controllers
                 {
                     if (vnp_ResponseCode == "00" && vnp_TransactionStatus == "00")
                     {
+                        var dao = new OrderDAO();
+                        var sess = (UserLogin)Session[KeyShop.Common.CommonConstants.USER_SESSION];
+                        var customerID = sess.UserId;
+
+                        var cart = Session["CART_SESSION"];
+                        var list = new List<Cart>();
+                        if (cart != null)
+                        {
+                            list = (List<Cart>)cart;
+                        }
+
+                        Order order = new Order();
+                        order.OrderCode = orderCode;
+                        order.CustomerID = customerID;
+                        order.TotalAmount = (int)vnp_Amount;
+                        order.Status = true;
+                        order.CreatedDate = DateTime.Now;
+                        list.ToList().ForEach(x => order.OrderDetail.Add(new OrderDetail
+                        {
+                            ProductID = x.product.Id,
+                            Price = x.product.PriceSale > 0 ? x.product.PriceSale.GetValueOrDefault(0) : x.product.Price,
+                            Quantity = x.Quantity,
+                            Code = new GiftcardDAO().TakeAndDelete(x.product.Id).Code
+                        }));
+                        dao.AddOrder(order);
+                        Session["CART_SESSION"] = null;
+
                         //var itemOrder = db.Orders.FirstOrDefault(x => x.Code == orderCode);
                         //if (itemOrder != null)
                         //{
@@ -214,22 +242,24 @@ namespace KeyShop.Controllers
 
                         //Thanh toan thanh cong
                         ViewBag.InnerText = "Giao dịch được thực hiện thành công. Cảm ơn quý khách đã sử dụng dịch vụ";
+                        ViewBag.SoTien = vnp_Amount.ToString();
+                        ViewBag.TrangThai = true;
                         //log.InfoFormat("Thanh toan thanh cong, OrderId={0}, VNPAY TranId={1}", orderId, vnpayTranId);
                     }
                     else
                     {
                         //Thanh toan khong thanh cong. Ma loi: vnp_ResponseCode
-                        ViewBag.InnerText = "Có lỗi xảy ra trong quá trình xử lý.Mã lỗi: " + vnp_ResponseCode;
+                        ViewBag.TrangThai = false;
+                        ViewBag.InnerText = "Có lỗi xảy ra trong quá trình xử lý. Mã lỗi: " + vnp_ResponseCode;
                         //log.InfoFormat("Thanh toan loi, OrderId={0}, VNPAY TranId={1},ResponseCode={2}", orderId, vnpayTranId, vnp_ResponseCode);
                     }
                     //displayTmnCode.InnerText = "Mã Website (Terminal ID):" + TerminalID;
                     //displayTxnRef.InnerText = "Mã giao dịch thanh toán:" + orderId.ToString();
                     //displayVnpayTranNo.InnerText = "Mã giao dịch tại VNPAY:" + vnpayTranId.ToString();
-                    ViewBag.ThanhToanThanhCong = vnp_Amount.ToString();
+                    
                     //displayBankCode.InnerText = "Ngân hàng thanh toán:" + bankCode;
                 }
             }
-            //var a = UrlPayment(0, "DH3574");
             return View();
         }
     }

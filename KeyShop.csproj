@@ -159,6 +159,7 @@
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\VnPayLibrary.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -2116,6 +2117,7 @@
     <Content Include="Views\Cart\Payment.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Cart\VnpayReturn.cshtml" />
+    <Content Include="Views\Error\PageNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

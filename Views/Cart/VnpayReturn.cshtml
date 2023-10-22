@@ -23,11 +23,11 @@
         </div>
         <div class="col-lg-12 col-sm-12 d-flex justify-content-center">
             <div class="row">
-                @if (ViewBag.ThanhToanThanhCong != null)
-                {
-                    <h3>Bạn đã thanh toán thành công @KeyShop.Common.CommonHelper.ConvertMoney(int.Parse(ViewBag.ThanhToanThanhCong))đ!</h3>
-                }
                 <h4>@ViewBag.InnerText</h4>
+                @if (ViewBag.TrangThai)
+                {
+                    <h3>Bạn đã thanh toán thành công @KeyShop.Common.CommonHelper.ConvertMoney(int.Parse(ViewBag.SoTien))đ!</h3>
+                }
             </div>
         </div>
     </div>

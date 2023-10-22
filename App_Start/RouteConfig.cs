@@ -56,6 +56,13 @@ namespace KeyShop
             );
 
             routes.MapRoute(
+               name: "404",
+               url: "page-404",
+               defaults: new { controller = "Error", action = "PageNotFound", id = UrlParameter.Optional },
+               namespaces: new[] { "KeyShop.Controllers" }
+           );
+
+            routes.MapRoute(
                name: "Default",
                url: "{controller}/{action}/{id}",
                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },

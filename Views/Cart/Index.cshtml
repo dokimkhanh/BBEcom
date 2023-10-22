@@ -79,9 +79,22 @@
                     </div>
                     <div class="cart-totals">
                         <ul>
-                            <li>Tổng cộng <span>$800.00</span></li>
-                            <li>Giảm giá <span>$30.00</span></li>
-                            <li>Thành tiền <span>$830.00</span></li>
+                            <li>
+                                Tổng cộng <span>
+                                    @{
+                                        int money = 0;
+                                        foreach (var item in Model)
+                                        {
+                                            var price = @item.product.PriceSale > 0 ? @item.product.PriceSale.Value : @item.product.Price;
+                                            money += item.Quantity * price;
+                                        }
+
+                                    }
+                                    @KeyShop.Common.CommonHelper.ConvertMoney(money)đ
+                                </span>
+                            </li>
+                            <li>Giảm giá <span>0đ</span></li>
+                            <li>Thành tiền <span>@KeyShop.Common.CommonHelper.ConvertMoney(money + 0)đ</span></li>
                         </ul>
                         <a href="/thanh-toan" class="default-btn"><span>Thanh toán ngay</span></a>
                     </div>
