@@ -3,6 +3,9 @@
     ViewBag.Title = "Giỏ hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section jsFooter {
+    <script src="/Content/Client/js/CartController.js"></script>
+}
 
 <div class="page-title-area">
     <div class="container">
@@ -29,8 +32,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">Sản phẩm</th>
-                                <th scope="col">Số lượng</th>
                                 <th scope="col">Giá</th>
+                                <th scope="col">Số lượng</th>
                                 <th scope="col">Thành tiền</th>
                                 <th scope="col"></th>
                             </tr>
@@ -50,12 +53,12 @@
                                     <td class="product-quantity">
                                         <div class="input-counter">
                                             <span class="minus-btn"><i class='bx bx-minus'></i></span>
-                                            <input type="text" value="@item.Quantity" id="productQuantity">
+                                            <input type="text" value="@item.Quantity" data-id="@item.product.Id" id="productQuantity">
                                             <span class="plus-btn"><i class='bx bx-plus'></i></span>
                                         </div>
                                     </td>
                                     <td>@KeyShop.Common.CommonHelper.ConvertMoney(item.Quantity * price)đ</td>
-                                    <td><a href="cart.html" class="remove"><i class='bx bx-trash'></i></a></td>
+                                    <td><a href="#" data-id="@item.product.Id" id="btnDelete" class="remove"><i class='bx bx-trash'></i></a></td>
                                 </tr>
                             }
                         </tbody>
@@ -64,31 +67,30 @@
                         <div class="row align-items-center">
                             <div class="col-lg-7 col-sm-12 col-md-7">
                                 <div class="shopping-coupon-code">
-                                    <input type="text" class="form-control" placeholder="Coupon code" name="coupon-code" id="coupon-code">
-                                    <button type="submit">Áp mã giảm giá</button>
+                                    <input type="text" class="form-control" placeholder="Nhập mã giảm giá" name="coupon-code" id="coupon-code" value="NGUOIMOI20">
+                                    <button type="submit">Dùng mã giảm giá</button>
                                 </div>
                             </div>
                             <div class="col-lg-5 col-sm-12 col-md-5 text-end">
-                                <a href="/gio-hang" class="default-btn"><span>Cập nhật giỏ hàng</span></a>
+                                <button id="btnUpdateCart" class="default-btn"><span>Cập nhật giỏ hàng</span></button>
+                                <button id="btnDeleteCart" class="default-btn"><span>Xoá tất cả</span></button>
                             </div>
                         </div>
                     </div>
                     <div class="cart-totals">
                         <ul>
-                            <li>Subtotal <span>$800.00</span></li>
-                            <li>Shipping <span>$30.00</span></li>
-                            <li>Total <span>$830.00</span></li>
+                            <li>Tổng cộng <span>$800.00</span></li>
+                            <li>Giảm giá <span>$30.00</span></li>
+                            <li>Thành tiền <span>$830.00</span></li>
                         </ul>
-                        <a href="checkout.html" class="default-btn"><span>Proceed to Checkout</span></a>
+                        <a href="/thanh-toan" class="default-btn"><span>Thanh toán ngay</span></a>
                     </div>
                 </form>
             }
             else
             {
-                <div class="justify-content-between">
-                    <div class="col-lg-7 col-sm-12 col-md-7">
-                        <h3>Bạn không có sản phẩm nào trong giỏ hàng.</h3>
-                    </div>
+                <div class="col-lg-12 col-sm-12 col-md-7 d-flex justify-content-center">
+                    <h3>Bạn không có sản phẩm nào trong giỏ hàng.</h3>
                 </div>
             }
         </div>

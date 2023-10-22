@@ -1,0 +1,100 @@
+﻿@model List<KeyShop.Models.Cart>
+
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h1>Thanh toán</h1>
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li>Thanh toán đơn hàng</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="checkout-area ptb-100">
+    <div class="container">
+        <div class="user-actions">
+            <span>Chưa muốn thanh toán? <a href="/gio-hang">Ấn vào đây để quay lại giỏ hàng</a></span>
+        </div>
+        @if (Model != null && Model.Any())
+        {
+            <form>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="order-details">
+                            <h3>Sản phẩm của bạn</h3>
+                            <div class="order-table table-responsive">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            var money = (item.product.PriceSale > 0) ? item.product.PriceSale : item.product.Price;
+                                            <tr>
+                                                <td class="product-name text-black">@item.product.Name</td>
+                                                <td class="product-total text-black">
+                                                    <span class="subtotal-amount">@KeyShop.Common.CommonHelper.ConvertMoney(money.GetValueOrDefault(0))đ</span>
+                                                </td>
+                                            </tr>
+                                        }
+                                        <tr>
+                                            <td class="order-subtotal"><span>Cart Subtotal</span></td>
+                                            <td class="order-subtotal-price">
+                                                <span class="order-subtotal-amount">$1683.50</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="order-shipping"><span>Shipping</span></td>
+                                            <td class="shipping-price">
+                                                <span>$30.00</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="total-price"><span>Order Total</span></td>
+                                            <td class="product-subtotal">
+                                                <span class="subtotal-amount">$750.00</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="payment-box">
+                                <div class="payment-method">
+                                    <p>
+                                        <input type="radio" id="direct-bank-transfer" name="radio-group" checked>
+                                        <label for="direct-bank-transfer">Thẻ ngân hàng</label>
+                                        Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+                                    </p>
+                                    <p>
+                                        <input type="radio" id="check-payments" name="radio-group">
+                                        <label for="check-payments">Số dư tài khoản</label>
+                                        Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+                                    </p>
+                                    <p>
+                                        <input type="radio" id="paypal" name="radio-group">
+                                        <label for="paypal">PayPal</label>
+                                        <img src="/Content/Client/img/paypal.png" alt="paypal">
+                                        Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <a href="privacy-policy.html">privacy policy</a>.
+                                    </p>
+                                </div>
+                                <button type="submit" class="default-btn"><span>Place Order</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        }
+        else
+        {
+            <div class="col-lg-12 col-sm-12 col-md-7 d-flex justify-content-center">
+                <h3>Bạn không có sản phẩm nào trong giỏ hàng để thanh toán</h3>
+            </div>
+        }
+    </div>
+</div>

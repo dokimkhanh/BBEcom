@@ -1744,6 +1744,7 @@
     <Content Include="Content\Client\js\ajaxchimp.min.js" />
     <Content Include="Content\Client\js\appear.min.js" />
     <Content Include="Content\Client\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\Client\js\CartController.js" />
     <Content Include="Content\Client\js\contact-form-script.js" />
     <Content Include="Content\Client\js\countrySelect.min.js" />
     <Content Include="Content\Client\js\form-validator.min.js" />
@@ -2110,6 +2111,7 @@
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Shared\Products.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
