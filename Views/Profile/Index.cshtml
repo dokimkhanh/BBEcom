@@ -1,6 +1,6 @@
 ﻿@model Models.EF.Account
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Trang cá nhân";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -24,10 +24,7 @@
                 <aside class="widget-area">
                     <div class="widget widget_follow_us">
                         <h3 class="widget-title"><span>Liên kết</span></h3>
-                        <ul>
-                            <li><a href="/trang-ca-nhan">Thông tin cá nhân</a></li>
-                            <li><a href="#">Lịch sử mua hàng</a></li>
-                        </ul>
+                        @{ Html.RenderAction("ProfileMenu", "Profile"); }
                     </div>
                 </aside>
             </div>

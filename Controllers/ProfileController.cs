@@ -22,7 +22,11 @@ namespace KeyShop.Controllers
                 var data = new AccountDAO().GetAccountById(member.UserId);
                 return View(data);
             }
+        }
 
+        public ActionResult ProfileMenu()
+        {
+            return PartialView();
         }
     }
 }
