@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,17 @@ namespace KeyShop.Controllers
         // GET: Profile
         public ActionResult Index()
         {
-            return View();
+            var member = (UserLogin)Session[KeyShop.Common.CommonConstants.USER_SESSION];
+            if (member == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                var data = new AccountDAO().GetAccountById(member.UserId);
+                return View(data);
+            }
+
         }
     }
 }

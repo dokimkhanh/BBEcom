@@ -1,8 +1,85 @@
-﻿
+﻿@model Models.EF.Account
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Ok</h2>
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h1>Thông tin tài khoản</h1>
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li>Thông tin tài khoản</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="blog-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12">
+                <aside class="widget-area">
+                    <div class="widget widget_follow_us">
+                        <h3 class="widget-title"><span>Liên kết</span></h3>
+                        <ul>
+                            <li><a href="/trang-ca-nhan">Thông tin cá nhân</a></li>
+                            <li><a href="#">Lịch sử mua hàng</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="contact-form">
+                        <h3>Thông tin cá nhân</h3>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6">
+                                <div class="form-group mb-3">
+                                    <label>Tên của bạn</label>
+                                    <input type="text" name="name" class="form-control" id="name" required data-error="Please enter your name" readonly value="@Model.Name">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6">
+                                <div class="form-group mb-3">
+                                    <label>Email</label>
+                                    <input type="email" name="email" class="form-control" id="email" required data-error="Please enter your email" readonly value="@Model.Email">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6">
+                                <div class="form-group mb-3">
+                                    <label>
+                                        Trạng thái tài khoản:
+                                    </label>
+                                    @if (Model.Status)
+                                    {
+                                        <span class="badge bg-success">Hoạt động</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Tạm ngưng hoạt động</span>
+                                    }
+
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="justify-content-end">
+                                    <a href="/Login/Logout" class="default-btn"><span>Đăng xuất</span></a>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
