@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace KeyShop.Controllers
 {
-    public class ProfileController : Controller
+    public class ProfileController : MemberBaseController
     {
         // GET: Profile
         public ActionResult Index()

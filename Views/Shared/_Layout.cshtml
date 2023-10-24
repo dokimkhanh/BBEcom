@@ -187,9 +187,19 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="/trang-ca-nhan">
-                                            <i class='bx bx-user-circle'></i>
-                                        </a>
+                                        @if (KeyShop.Common.CommonConstants.USER_SESSION != null)
+                                        {
+                                            <a href="/trang-ca-nhan">
+                                                <i class='bx bx-user-circle'></i>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="/dang-nhap">
+                                                <i class='bx bx-log-in'></i>
+                                            </a>
+                                        }
+
                                     </li>
                                     <li>
                                         <a href="/gio-hang" class="position-relative">
@@ -228,7 +238,21 @@
                                         <i class='bx bx-search'></i>
                                     </div>
                                 </li>
-                                <li><a href="/trang-ca-nhan"><i class='bx bx-user-circle'></i></a></li>
+                                <li>
+                                    @if (KeyShop.Common.CommonConstants.USER_SESSION != null)
+                                    {
+                                        <a href="/trang-ca-nhan">
+                                            <i class='bx bx-user-circle'></i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/dang-nhap">
+                                            <i class='bx bx-log-in'></i>
+                                        </a>
+                                    }
+
+                                </li>
                                 <li>
                                     <a href="/gio-hang"><i class='bx bx-cart'></i></a><span class="badge rounded-pill bg-warning text-dark">10</span>
                                 </li>

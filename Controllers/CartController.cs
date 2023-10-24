@@ -13,7 +13,7 @@ using System.Web.Script.Serialization;
 
 namespace KeyShop.Controllers
 {
-    public class CartController : Controller
+    public class CartController : MemberBaseController
     {
         private const string CartSession = "CART_SESSION";
         // GET: Cart

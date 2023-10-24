@@ -160,6 +160,8 @@
     <Compile Include="Common\VnPayLibrary.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MemberBaseController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -2118,11 +2120,13 @@
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\Cart\VnpayReturn.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Data\" />
+    <Folder Include="Views\MemberBase\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
