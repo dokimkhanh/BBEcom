@@ -1,4 +1,6 @@
-﻿using Models.DAO;
+﻿using KeyShop.Areas.Admin.Models;
+using KeyShop.Common;
+using Models.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,17 @@ namespace KeyShop.Controllers
         public ActionResult ProfileMenu()
         {
             return PartialView();
+        }
+
+        public ActionResult OrderHistory()
+        {
+            var user = (UserLogin)Session[KeyShop.Common.CommonConstants.USER_SESSION];
+            if (user != null)
+            {
+                var dataOrder = new OrderDAO().GetListOrderByCustomerID(user.UserId);
+                return View(dataOrder);
+            }
+            return View();
         }
     }
 }

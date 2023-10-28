@@ -28,6 +28,13 @@ namespace KeyShop
            );
 
             routes.MapRoute(
+              name: "OrderHistory",
+              url: "lich-su-mua-hang",
+              defaults: new { controller = "Profile", action = "OrderHistory", id = UrlParameter.Optional },
+              namespaces: new[] { "KeyShop.Controllers" }
+          );
+
+            routes.MapRoute(
                name: "Payment",
                url: "thanh-toan",
                defaults: new { controller = "Cart", action = "Payment", id = UrlParameter.Optional },
