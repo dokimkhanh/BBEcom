@@ -11,7 +11,10 @@
                         <img src="@item.Images" alt="products-@item.Name">
                     </a>
                     <ul class="products-button">
-                        <li><a href="/gio-hang/them-@item.Id-1"><i class='bx bx-cart-alt'></i></a></li>
+                        @if (item.Giftcard.Where(x => x.ProductId == item.Id).Count() >= 1)
+                        {
+                            <li><a href="/gio-hang/them-@item.Id-1"><i class='bx bx-cart-alt'></i></a></li>
+                        }
                         <li>
                             <a href="#" data-bs-toggle="modal" data-bs-target="#productsQuickView-@item.Id">
                                 <i class='bx bx-show'></i>
@@ -86,13 +89,21 @@
                                             <input type="text" value="1" id="productQuantity">
                                             <span class="plus-btn"><i class='bx bx-plus'></i></span>
                                         </div>
-                                        <a href="/gio-hang/them-@item.Id-1" class="default-btn"><span>Thêm vào giỏ hàng</span></a>
+                                        @if (item.Giftcard.Where(x => x.ProductId == item.Id).Count() >= 1)
+                                        {
+                                            <a href="/gio-hang/them-@item.Id-1" class="default-btn"><span>Thêm vào giỏ hàng</span></a>
+                                        }
+                                        else
+                                        {
+                                            <a href="#" class="default-btn disabled"><span>Hết hàng</span></a>
+
+                                        }
                                     </div>
                                     <br />
                                     <ul class="products-info">
                                         <li><span>SKU:</span> KSP@(item.Id)</li>
                                         <li><span>Danh mục:</span> <a href="/danh-muc/@(item.Category.Alias)-@(item.Category.Id)">@item.Category.Name</a></li>
-                                        <li><span>Còn lại:</span> Trong kho (7 code)</li>
+                                        <li><span>Còn lại:</span> Trong kho (@item.Giftcard.Count code còn lại)</li>
                                     </ul>
                                 </div>
                             </div>

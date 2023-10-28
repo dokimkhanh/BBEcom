@@ -221,14 +221,34 @@ namespace KeyShop.Controllers
                         order.TotalAmount = (int)vnp_Amount;
                         order.Status = true;
                         order.CreatedDate = DateTime.Now;
-                        list.ToList().ForEach(x => order.OrderDetail.Add(new OrderDetail
+
+                        foreach (var item in list)
                         {
-                            ProductID = x.product.Id,
-                            Price = x.product.PriceSale > 0 ? x.product.PriceSale.GetValueOrDefault(0) : x.product.Price,
-                            Quantity = x.Quantity,
-                            Code = new GiftcardDAO().TakeAndDelete(x.product.Id).Code
-                        }));
+                            for (int i = 0; i < item.Quantity; i++)
+                            {
+                                var newOrderDetail = new OrderDetail
+                                {
+                                    ProductID = item.product.Id,
+                                    Price = item.product.PriceSale > 0 ? item.product.PriceSale.GetValueOrDefault(0) : item.product.Price,
+                                    Quantity = item.Quantity,
+                                    Code = new GiftcardDAO().TakeAndDelete(item.product.Id).Code
+                                };
+
+                                order.OrderDetail.Add(newOrderDetail);
+                            }
+                            
+                        }
+
                         dao.AddOrder(order);
+
+                        //list.ToList().ForEach(x => order.OrderDetail.Add(new OrderDetail
+                        //{
+
+                        //    ProductID = x.product.Id,
+                        //    Price = x.product.PriceSale > 0 ? x.product.PriceSale.GetValueOrDefault(0) : x.product.Price,
+                        //    Quantity = x.Quantity,
+                        //    Code = new GiftcardDAO().TakeAndDelete(x.product.Id).Code
+                        //}));
                         Session["CART_SESSION"] = null;
 
                         //var itemOrder = db.Orders.FirstOrDefault(x => x.Code == orderCode);
@@ -256,7 +276,7 @@ namespace KeyShop.Controllers
                     //displayTmnCode.InnerText = "Mã Website (Terminal ID):" + TerminalID;
                     //displayTxnRef.InnerText = "Mã giao dịch thanh toán:" + orderId.ToString();
                     //displayVnpayTranNo.InnerText = "Mã giao dịch tại VNPAY:" + vnpayTranId.ToString();
-                    
+
                     //displayBankCode.InnerText = "Ngân hàng thanh toán:" + bankCode;
                 }
             }
