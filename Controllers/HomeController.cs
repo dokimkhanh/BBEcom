@@ -17,7 +17,7 @@ namespace KeyShop.Controllers
 
         public PartialViewResult Categories()
         {
-            var model = new CategoryDAO().GetCategoriesName();
+            var model = new CategoryDAO().GetCategoriesName(null);
             return PartialView(model);
         }
 

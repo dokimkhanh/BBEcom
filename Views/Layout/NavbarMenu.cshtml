@@ -1,0 +1,34 @@
+﻿@{
+    var listPro = ViewBag.MostProduct;
+    var listCate = ViewBag.MostCategory;
+}
+
+<li class="nav-item">
+    <a href="#" class="nav-link active">Trang chủ</a>
+</li>
+<li class="nav-item">
+    <a href="#" class="dropdown-toggle nav-link">Danh mục nổi bật</a>
+    <ul class="dropdown-menu">
+
+        @foreach (var item in listCate)
+        {
+            <li class="nav-item">
+                <a href="/danh-muc/@item.Alias-@item.Id" class="nav-link">@item.Name</a>
+            </li>
+        }
+
+    </ul>
+</li>
+<li class="nav-item">
+    <a href="#" class="dropdown-toggle nav-link">Sản phẩm nổi bật</a>
+    <ul class="dropdown-menu">
+        @foreach (var item in listPro)
+        {
+            <li class="nav-item">
+                <a href="/san-pham/@item.Alias-@item.Id" class="nav-link">@item.Name</a>
+            </li>
+        }
+    </ul>
+</li>
+<li class="nav-item"><a href="#" class="nav-link">Tin tức</a></li>
+<li class="nav-item"><a href="#" class="nav-link">Liên hệ</a></li>

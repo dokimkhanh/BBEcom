@@ -14,7 +14,7 @@ namespace KeyShop.Areas.Admin.Controllers
     public class CategoryController : BaseController
     {
         // GET: Admin/Category
-        public ActionResult Index(string txtSearch, int page = 1, int pageSize = 2)
+        public ActionResult Index(string txtSearch, int page = 1, int pageSize = 10)
         {
             var dao = new CategoryDAO();
             var list = dao.GetCategories(txtSearch, page, pageSize);

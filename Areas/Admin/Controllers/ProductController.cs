@@ -104,7 +104,7 @@ namespace KeyShop.Areas.Admin.Controllers
         public void SetViewBag(int? selectedID = null)
         {
             var dao = new CategoryDAO();
-            ViewBag.productCategoryID = new SelectList(dao.GetCategoriesName(), "Id", "Name", selectedID);
+            ViewBag.productCategoryID = new SelectList(dao.GetCategoriesName(null), "Id", "Name", selectedID);
         }
     }
 }
