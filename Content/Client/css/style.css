@@ -4848,3 +4848,36 @@ blockquote cite,
 .productsFilterModal.modal .modal-content .widget-area {
     padding-left: 0
 }
+
+.custom-badge {
+    background-color: #FF5733; /* Màu nền của badge */
+    color: #FFFFFF; /* Màu chữ */
+    font-size: 0.9rem; /* Giảm kích thước chữ một chút */
+    padding: 0.2rem 0.5rem; /* Kích thước badge */
+    border: 1px solid #FF5733; /* Viền của badge */
+    border-radius: 0.25rem; /* Độ bo của badge */
+}
+
+/* Thiết lập kiểu cho nút copy */
+.btn-copy {
+    font-size: 0.9rem; /* Giảm kích thước chữ lại */
+    background-color: #FF5733; /* Màu nền tương tự như class custom-badge */
+    color: #FFFFFF; /* Màu chữ */
+    padding: 0.2rem 0.5rem; /* Kích thước nút */
+    border: 1px solid #FF5733; /* Viền của nút */
+    border-radius: 0.25rem; /* Độ bo của nút */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+    /* Tạo khoảng cách giữa biểu tượng và chữ trong nút */
+    .btn-copy i {
+        margin-right: 5px; /* Khoảng cách giữa biểu tượng và chữ */
+    }
+
+    /* Hiệu ứng khi di chuột qua nút */
+    .btn-copy:hover {
+        background-color: #FF5733; /* Màu nền tương tự như class custom-badge */
+        color: #FFFFFF; /* Màu chữ khi di chuột qua */
+    }

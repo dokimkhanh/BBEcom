@@ -1,4 +1,4 @@
-(function ($) {
+﻿(function ($) {
     "use strict"; $('.mean-menu').meanmenu({ meanScreenWidth: "991" }); $(window).on('scroll', function () {
         if ($(this).scrollTop() > 120) { $('.navbar-area').addClass("is-sticky"); }
         else { $('.navbar-area').removeClass("is-sticky"); }
@@ -10,7 +10,7 @@
             var oldValue = parseFloat(input.val()); if (oldValue <= min) { var newVal = oldValue; } else { var newVal = oldValue - 1; }
             spinner.find("input").val(newVal); spinner.find("input").trigger("change");
         });
-    }); 
+    });
     $("#country_selector, #country_selector2").countrySelect({ preferredCountries: ['ca', 'gb', 'us'] });
     $(document).ready(function () { loopcounter('counter-class'); });
     $(".js-range-of-price").ionRangeSlider({ type: "double", drag_interval: true, min_interval: null, max_interval: null });
@@ -23,8 +23,8 @@
     function submitMSGSub(valid, msg) {
         if (valid) {
             var msgClasses = "validation-success";
-        } else { 
-            var msgClasses = "validation-danger"; 
+        } else {
+            var msgClasses = "validation-danger";
         }
         $("#validator-newsletter").removeClass().addClass(msgClasses).text(msg);
     }
@@ -37,4 +37,5 @@
         });
         $('.go-top').on('click', function () { $("html, body").animate({ scrollTop: "0" }, 500); });
     });
+
 }(jQuery));

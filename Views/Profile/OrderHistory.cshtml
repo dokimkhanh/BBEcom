@@ -4,6 +4,43 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section jsFooter{
+    <script>
+        document.querySelectorAll('.custom-badge').forEach(function (element) {
+            element.addEventListener('click', function (event) {
+                var copyContent = event.target.getAttribute('data-copy-content');
+                copyToClipboard(copyContent);
+            });
+        });
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text)
+                .then(function () {
+/*                    console.log('Đã sao chép thành công vào clipboard: ' + text);*/
+                    Toastify({
+                        text: "Đã sao chép thành công code: " + text,
+                        duration: 3000,
+                        destination: "https://github.com/apvarun/toastify-js",
+                        newWindow: true,
+                        close: true,
+                        gravity: "top", // `top` or `bottom`
+                        position: "right", // `left`, `center` or `right`
+                        stopOnFocus: true, // Prevents dismissing of toast on hover
+                        style: {
+                            background: "linear-gradient(to right, #FF5733, #FF6600)",
+                        },
+                        onClick: function () { } // Callback after click
+                    }).showToast();
+
+                })
+                .catch(function (error) {
+                    console.error('Lỗi khi sao chép vào clipboard: ' + error);
+                });
+        }
+
+    </script>
+
+}
 <div class="page-title-area">
     <div class="container">
         <div class="page-title-content">
@@ -20,7 +57,7 @@
 <div class="blog-area ptb-100">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-12">
+            <div class="col-lg-2 col-md-12">
                 <aside class="widget-area">
                     <div class="widget widget_follow_us">
                         <h3 class="widget-title"><span>Liên kết</span></h3>
@@ -28,7 +65,7 @@
                     </div>
                 </aside>
             </div>
-            <div class="col-lg-8 col-md-12">
+            <div class="col-lg-10 col-md-12">
                 <div class="row">
                     <div class="contact-form">
                         <h3>Lịch sử mua hàng của bạn: </h3>
@@ -53,7 +90,10 @@
                                                 <td>
                                                     @foreach (var code in item.OrderDetail)
                                                     {
-                                                        <p>@code.Product.Name: <span class="text-danger">@code.Code</span></p>
+                                                        <p class="text-black">
+                                                            @code.Product.Name:
+                                                            <span class="custom-badge" data-copy-content="@code.Code">@code.Code</span>
+                                                        </p>
                                                     }
                                                 </td>
                                                 <td>@item.TotalAmount.ToString("N0")đ</td>
