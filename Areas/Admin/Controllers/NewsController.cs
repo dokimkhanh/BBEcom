@@ -3,20 +3,19 @@ using Models.DAO;
 using Models.EF;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace KeyShop.Areas.Admin.Controllers
 {
-    public class FaqController : BaseController
+    public class NewsController : BaseController
     {
-        // GET: Admin/Faq
+        // GET: Admin/News
         public ActionResult Index(string txtSearch, int page = 1, int pageSize = 10)
         {
-            var dao = new FaqDAO();
-            var model = dao.GetFaqs(txtSearch, page, pageSize);
+            var dao = new NewsDAO();
+            var model = dao.GetAllNews(txtSearch, page, pageSize);
             ViewBag.Search = txtSearch;
             return View(model);
         }
@@ -29,12 +28,13 @@ namespace KeyShop.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Faq model)
+        public ActionResult Create(News model)
         {
             if (ModelState.IsValid)
             {
-
-                var res = new FaqDAO().AddFAQ(model);
+                model.CreateDate = DateTime.Now;
+                model.Alias = CommonHelper.ChuyenCoDauThanhKhongDau(model.Title);
+                var res = new NewsDAO().AddNews(model);
                 if (res > 0)
                 {
                     SetAlert("Thêm danh mục thành công", "success");
@@ -53,20 +53,22 @@ namespace KeyShop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var model = new FaqDAO().GetFaq(id);
-            return View(model);
+            var news = new NewsDAO().GetNewsById(id);
+            return View(news);
+          
         }
-
         [HttpPost]
-        public ActionResult Edit(Faq model)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(News model)
         {
             if (ModelState.IsValid)
             {
-                var res = new FaqDAO().UpdateFAQ(model);
+                model.Alias = CommonHelper.ChuyenCoDauThanhKhongDau(model.Title);
+                var res = new NewsDAO().UpdateNews(model);
                 if (res)
                 {
-                    SetAlert("Sửa thông tin FAQ thành công", "success");
-                    return RedirectToAction("Index", "Faq");
+                    SetAlert("Sửa thông tin thành công", "success");
+                    return RedirectToAction("Index", "News");
                 }
                 else
                 {
@@ -74,24 +76,22 @@ namespace KeyShop.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Không thể sửa thông tin");
                 }
             }
-            return View();
+            return View("Index");
         }
 
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            var res = new FaqDAO().DeleteFaq(id);
+            var res = new NewsDAO().DeleteNews(id);
             if (res)
             {
-                SetAlert("Xoá thành công", "warning");
-                return RedirectToAction("Index", "Category");
+                SetAlert("Xoá tin tức thành công", "warning");
             }
             else
             {
                 SetAlert("Thao tác thất bại", "error");
-                ModelState.AddModelError("", "Không thể sửa thông tin");
             }
-            return View("Index");
+            return RedirectToAction("Index");
         }
     }
 }

@@ -5,7 +5,7 @@
     <div class="col-lg-4 col-md-6">
         <div class="single-blog-post">
             <div class="image">
-                <a href="blog-details.html" class="d-block">
+                <a href="/tin-tuc/@item.Alias-@item.Id" class="d-block">
                     <img src="@item.Image" alt="blog-image">
                 </a>
             </div>
@@ -14,7 +14,7 @@
                     <span>@item.CreateDate.Value.ToString("dd/MM")</span>@item.CreateDate.Value.ToString("yyyy")
                 </span>
                 <a href="javascript:void(0)" class="category">ADMIN</a>
-                <h3><a href="blog-details.html">@item.Title</a></h3>
+                <h3><a href="/tin-tuc/@item.Alias-@item.Id">@item.Title</a></h3>
             </div>
         </div>
     </div>
