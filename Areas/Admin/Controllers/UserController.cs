@@ -14,7 +14,7 @@ namespace KeyShop.Areas.Admin.Controllers
     public class UserController : BaseController
     {
         // GET: Admin/User
-        public ActionResult Index(string txtSearch, int page = 1, int pageSize = 2)
+        public ActionResult Index(string txtSearch, int page = 1, int pageSize = 10)
         {
             var dao = new AccountDAO();
             var users = dao.GetListAccounts(txtSearch, page, pageSize);

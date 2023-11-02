@@ -21,6 +21,15 @@ namespace KeyShop.Areas.Admin.Controllers
                     action = "Index",
                     Area = "Admin"
                 }));
+
+            } else if(sess.IsAdmin != true)
+            {
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
+                {
+                    controller = "Home",
+                    action = "Index",
+                    Area = ""
+                }));
             }
             base.OnActionExecuting(filterContext);
         }

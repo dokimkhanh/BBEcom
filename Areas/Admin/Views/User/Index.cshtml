@@ -47,6 +47,9 @@
                                     <h6 class="fw-semibold mb-0">Họ và tên</h6>
                                 </th>
                                 <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Quyền hạn</h6>
+                                </th>
+                                <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Trạng thái</h6>
                                 </th>
                                 <th class="border-bottom-0">
@@ -68,6 +71,19 @@
                                         </td>
                                         <td class="border-bottom-0">
                                             <p class="mb-0 fw-normal">@item.Name</p>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <div class="d-flex align-items-center gap-2">
+                                                @if (item.IsAdmin)
+                                                {
+                                                    <span class="badge bg-danger rounded-3 fw-semibold">Admin</span>
+                                                }
+                                                else
+                                                {
+
+                                                    <span class="badge bg-primary rounded-3 fw-semibold">Thành viên</span>
+                                                }
+                                            </div>
                                         </td>
                                         <td class="border-bottom-0">
                                             <div class="d-flex align-items-center gap-2">
