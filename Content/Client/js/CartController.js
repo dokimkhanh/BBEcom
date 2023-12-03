@@ -23,6 +23,8 @@
                 success: function (res) {
                     if (res.status) {
                         window.location.href = '/gio-hang'
+                    } else {
+                        alert('Kho hàng không đủ, vui lòng giảm số lượng sản phẩm')
                     }
                 }
             })

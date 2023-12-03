@@ -1,8 +1,8 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
-@model IPagedList<Models.EF.News>
+@model IPagedList<Models.EF.Giftcard>
 @{
-    ViewBag.Title = "Quản lý tin tức";
+    ViewBag.Title = "Quản lý Giftcode";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,10 +14,10 @@
             <div class="card-body p-4">
                 <div class="row">
                     <div class="col-md-6">
-                        <h5 class="card-title fw-semibold mb-4">Danh sách FAQ</h5>
+                        <h5 class="card-title fw-semibold mb-4">Danh sách GiftCode</h5>
                     </div>
                     <div class="col-md-6 text-end">
-                        <a href="/Admin/News/Create" class="btn btn-primary">Thêm bài đăng</a>
+                        <a href="/Admin/Gift/Create" class="btn btn-primary">Thêm Gift</a>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -28,13 +28,13 @@
                                     <h6 class="fw-semibold mb-0">Id</h6>
                                 </th>
                                 <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Tiêu đề</h6>
+                                    <h6 class="fw-semibold mb-0">Code</h6>
                                 </th>
                                 <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Ảnh</h6>
+                                    <h6 class="fw-semibold mb-0">Sản phẩm</h6>
                                 </th>
                                 <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Ngày tạo</h6>
+                                    <h6 class="fw-semibold mb-0">Danh mục</h6>
                                 </th>
                                 <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Thao tác</h6>
@@ -42,7 +42,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if (Model!= null && Model.Any())
+                            @if (Model != null && Model.Any())
                             {
                                 foreach (var item in Model)
                                 {
@@ -51,16 +51,17 @@
                                             <p class="fw-semibold mb-0">@item.Id</p>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <p class="mb-0 fw-semibold text-black ">@item.Title</p>
+                                            <p class="mb-0 fw-semibold text-black">@item.Code</p>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <img src="@item.Image" alt="Ảnh @item.Title" class="rounded-1" width="40%" height="50%" />
+                                            <p class="mb-0 fw-semibold text-black ">@item.Product.Name</p>
+                                        </td>
+
+                                        <td class="border-bottom-0">
+                                            <p class="mb-0 fw-normal">@item.Product.Category.Name</p>
                                         </td>
                                         <td class="border-bottom-0">
-                                            <p class="mb-0 fw-normal">@item.CreateDate</p>
-                                        </td>
-                                        <td class="border-bottom-0">
-                                            <a href="/Admin/News/Edit/@item.Id" class="fw-semibold mb-0 fs-4 btn btn-primary m-1">Sửa</a>
+                                            <a href="/Admin/Gift/Edit/@item.Id" class="fw-semibold mb-0 fs-4 btn btn-primary m-1">Sửa</a>
                                             @Ajax.ActionLink("Xoá", "Delete", new { @id = item.Id }, new AjaxOptions
                                             {
                                             Confirm = "Bạn có chắc muốn xoá",

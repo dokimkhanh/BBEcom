@@ -28,6 +28,13 @@ namespace KeyShop
           );
 
             routes.MapRoute(
+              name: "Register",
+              url: "dang-ky",
+              defaults: new { controller = "Register", action = "Index", id = UrlParameter.Optional },
+              namespaces: new[] { "KeyShop.Controllers" }
+          );
+
+            routes.MapRoute(
                name: "Profile",
                url: "trang-ca-nhan",
                defaults: new { controller = "Profile", action = "Index", id = UrlParameter.Optional },

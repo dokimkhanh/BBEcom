@@ -20,7 +20,7 @@
 
 <div class="profile-authentication-area ptb-100">
     <div class="container">
-        <div class="row  justify-content-center">
+        <div class="row justify-content-center">
             <div class="col-lg-6 col-md-12">
                 <div class="login-form">
                     <h2>ĐĂNG NHẬP</h2>
@@ -32,13 +32,11 @@
                             <label>Tên đăng nhập</label>
                             @*<input type="text" class="form-control" placeholder="Tên đăng nhập">*@
                             @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @placeholder = "Nhập tên đăng nhập...", @autofocus = "autofocus" })
-
                         </div>
                         <div class="form-group">
                             <label>Mật khẩu</label>
                             @*<input type="password" class="form-control" placeholder="Mật khẩu">*@
                             @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "password", @placeholder = "Password..." })
-
                         </div>
                         <div class="row align-items-center">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-6 remember-me-wrap">
@@ -49,6 +47,8 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-6 lost-your-password-wrap">
+                                <a href="/dang-ky" class="lost-your-password">Đăng ký mới?</a>
+                                <p></p>
                                 <a href="#" class="lost-your-password">Quên mật khẩu?</a>
                             </div>
                         </div>

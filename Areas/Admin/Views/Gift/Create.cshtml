@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-body">
+
+        @using (Html.BeginForm("Create", "Gift", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true);
+
+            <div class="form-horizontal">
+                <h4>Thêm code mới</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="row col-md-12">
+                    <div class="mb-3 col-md-12">
+                        <label for="productId" class="form-label col-md-2">Danh mục</label>
+                        <div class="col-md-12">
+                            @Html.DropDownList("productId", ViewBag.productID as SelectList, "Chọn sản phẩm", new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label col-md-2">Danh sách Code</label>
+                    <div class="col-md-12">
+                        @Html.TextArea("codeList", new { @class = "form-control", @cols = "30", @rows = "4", placeholder = "Mỗi dòng một code để thêm số lượng lớn..." })
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="mb-3">
+                        <div class="col-md-offset-2 col-md-12">
+                            <button type="submit" class="btn btn-primary">Thêm code mới</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Quay lại danh sách", "Index")
+        </div>
+    </div>
+</div>

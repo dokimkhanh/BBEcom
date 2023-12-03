@@ -1,0 +1,63 @@
+﻿@model Models.EF.Account
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h1>Tài khoản</h1>
+            <ul>
+                <li><a href="/">Trang chủ</a></li>
+                <li>Đăng ký tài khoản</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="profile-authentication-area ptb-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-12">
+                <div class="login-form">
+                    <h2>ĐĂNG KÝ NGƯỜI DÙNG</h2>
+                    @using (Html.BeginForm("Register", "Register", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                        <div class="form-group">
+                            <label>Tên đăng nhập</label>
+                            @*<input type="text" class="form-control" placeholder="Username">*@
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @placeholder = "Nhập tên đăng nhập...", @autofocus = "autofocus" })
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            @*<input type="email" class="form-control" placeholder="Chúng tôi sẽ gửi mã trong trường hợp quên mật khẩu">*@
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @type = "email", placeholder = "Chúng tôi sẽ gửi mã trong trường hợp quên mật khẩu" })
+                        </div>
+                        <div class="form-group">
+                            <label>Tên hiển thị</label>
+                            @*<input type="text" class="form-control" placeholder="Tên đăng nhập">*@
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Nhập tên hiển thị..." })
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            @*<input type="password" class="form-control" placeholder="Password">*@
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "password", @placeholder = "Password..." })
+                        </div>
+                        @*<p class="description">The password should be at least eight characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ &amp; )</p>*@
+                        <button type="submit">ĐĂNG KÝ MỚI</button>
+                        <div class="row align-items-center mt-4">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-6 remember-me-wrap">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-6 lost-your-password-wrap">
+                                <a href="/dang-nhap" class="lost-your-password">Đã có tài khoản? Đăng nhập</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

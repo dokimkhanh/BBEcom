@@ -77,7 +77,14 @@ namespace KeyShop.Controllers
                 var jsonItem = jsonCart.SingleOrDefault(x => x.product.Id == item.product.Id);
                 if (jsonItem != null)
                 {
-                    item.Quantity = jsonItem.Quantity;
+                    if (jsonItem.product.Giftcard.Where(x => x.ProductId == item.product.Id).Count() >= 1)
+                    {
+                        item.Quantity = jsonItem.Quantity;
+                    } else
+                    {
+                        return Json(new { status = false });
+
+                    }
 
                 }
             }
@@ -236,7 +243,7 @@ namespace KeyShop.Controllers
 
                                 order.OrderDetail.Add(newOrderDetail);
                             }
-                            
+
                         }
 
                         dao.AddOrder(order);
