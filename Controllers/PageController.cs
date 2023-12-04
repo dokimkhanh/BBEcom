@@ -15,12 +15,6 @@ namespace KeyShop.Controllers
         }
 
         [HttpGet]
-        public ActionResult ChinhSach()
-        {
-            return View();
-        }
-
-        [HttpGet]
         public ActionResult GioiThieu()
         {
             return View();
