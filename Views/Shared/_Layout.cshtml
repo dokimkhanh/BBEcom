@@ -80,32 +80,36 @@
                             <div class="d-flex align-items-center">
                                 <ul>
                                     <li>
-                                        <select class="form-select">
-                                            <option selected>English</option>
-                                            <option value="1">Spanish</option>
-                                            <option value="2">Chinese</option>
-                                        </select>
-                                    </li>
-                                    <li>
                                         <div class="search-icon">
                                             <i class='bx bx-search'></i>
                                         </div>
                                     </li>
-                                    <li>
-                                        @if (Session[KeyShop.Common.CommonConstants.USER_SESSION] != null)
-                                        {
+
+                                    @if (Session[KeyShop.Common.CommonConstants.USER_SESSION] != null)
+                                    {
+                                        <li>
                                             <a href="/trang-ca-nhan">
                                                 <i class='bx bx-user-circle'></i>
                                             </a>
-                                        }
-                                        else
+                                        </li>
+                                        if (((UserLogin)Session[KeyShop.Common.CommonConstants.USER_SESSION]).IsAdmin )
                                         {
+                                            <li>
+                                                <a href="/Admin">
+                                                    <i class='bx bx-check-shield'></i>
+                                                </a>
+                                            </li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li>
                                             <a href="/dang-nhap">
                                                 <i class='bx bx-log-in'></i>
                                             </a>
-                                        }
+                                        </li>
+                                    }
 
-                                    </li>
                                     <li>
                                         <a href="/gio-hang" class="position-relative">
                                             <i class='bx bx-cart'></i>
@@ -199,7 +203,7 @@
                     <div class="single-footer-widget pl-4">
                         <h3>THÔNG TIN</h3>
                         <ul class="custom-links">
-                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="about.html">Giới thiệu</a></li>
                             <li><a href="terms-conditions.html">Terms & Conditions</a></li>
                         </ul>
                     </div>

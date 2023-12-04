@@ -13,5 +13,17 @@ namespace KeyShop.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult ChinhSach()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult GioiThieu()
+        {
+            return View();
+        }
     }
 }

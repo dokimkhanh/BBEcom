@@ -14,6 +14,13 @@ namespace KeyShop
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+              name: "AboutUs",
+              url: "gioi-thieu-ve-chung-toi",
+              defaults: new { controller = "Page", action = "GioiThieu", id = UrlParameter.Optional },
+              namespaces: new[] { "KeyShop.Controllers" }
+          );
+
+            routes.MapRoute(
               name: "News",
               url: "tin-tuc/{alias}-{id}",
               defaults: new { controller = "News", action = "View", id = UrlParameter.Optional },

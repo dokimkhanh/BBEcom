@@ -2138,6 +2138,8 @@
     <Content Include="Views\Layout\NavbarMenu.cshtml" />
     <Content Include="Views\News\View.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Page\ChinhSach.cshtml" />
+    <Content Include="Views\Page\GioiThieu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2145,7 +2147,6 @@
     <Folder Include="Areas\Admin\Views\Register\" />
     <Folder Include="Data\" />
     <Folder Include="Views\MemberBase\" />
-    <Folder Include="Views\Page\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

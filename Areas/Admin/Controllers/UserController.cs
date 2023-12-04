@@ -47,6 +47,7 @@ namespace KeyShop.Areas.Admin.Controllers
                     SetAlert("Thêm thất bại", "error");
                     ModelState.AddModelError("", "Thêm người dùng thất bại");
                 }
+               
             }
             return View("Index");
 

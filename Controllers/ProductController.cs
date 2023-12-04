@@ -1,4 +1,5 @@
 ﻿using Models.DAO;
+using Models.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,12 @@ namespace KeyShop.Controllers
 {
     public class ProductController : Controller
     {
+
         // GET: Category
         public ActionResult Index()
         {
             return View();
         }
-
         public ActionResult Category(int id)
         {
             var dao = new CategoryDAO();

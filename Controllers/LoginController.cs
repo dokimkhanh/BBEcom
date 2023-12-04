@@ -38,6 +38,7 @@ namespace KeyShop.Controllers
                     userSession.UserName = user.UserName;
                     userSession.UserId = user.Id;
                     userSession.Name = user.Name;
+                    userSession.IsAdmin = user.IsAdmin;
                     Session.Add(CommonConstants.USER_SESSION, userSession);
                     return RedirectToAction("Index", "Home");
                 }

@@ -29,7 +29,7 @@ namespace KeyShop.Controllers
 
         public PartialViewResult ListProduct()
         {
-           var list = new ProductDAO().GetListProduct(20);
+            var list = new ProductDAO().GetListProduct(20);
             return PartialView(list);
         }
     }
