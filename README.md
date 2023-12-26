@@ -15,12 +15,21 @@ KeyShop is an e-commerce project focused on providing automated game code purcha
 We welcome contributions and feedback from the community. If you encounter issues or have contributions, create an issue or send a pull request. We appreciate your contributions!
 
 
-## Installation
+## Installation/Environment Variables
 
 
 To integrate the latest features into your code, please download the contents of the "Model" folder from the latest release on GitHub: [KeyShop Releases](https://github.com/dokimkhanh/KeyShop/releases/).
 
 After downloading, import the contents of the "Model" folder into your project code. Ensure that you have the most up-to-date model files before running the application to leverage the latest enhancements and improvements.
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`vnp_TmnCode`
+
+`vnp_HashSecret`
+
+`vnp_Returnurl`: Change to your website url or localhost:port
+
 
 ## License
 [MIT](https://opensource.org/license/mit/)
