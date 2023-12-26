@@ -77,13 +77,16 @@ namespace KeyShop.Controllers
                 var jsonItem = jsonCart.SingleOrDefault(x => x.product.Id == item.product.Id);
                 if (jsonItem != null)
                 {
-                    if (jsonItem.product.Giftcard.Where(x => x.ProductId == item.product.Id).Count() >= 1)
+                    // jsonItem.Quantity: input quantity
+
+                    bool dem = new GiftcardDAO().CheckStock(jsonItem.product.Id, jsonItem.Quantity);
+                    if (dem == true)
                     {
                         item.Quantity = jsonItem.Quantity;
-                    } else
+                    }
+                    else
                     {
                         return Json(new { status = false });
-
                     }
 
                 }
