@@ -7,11 +7,7 @@ KeyShop is an e-commerce project focused on providing automated game code purcha
 - Automated Shopping: The system instantly provides game codes after payment, reducing waiting time for users.
 - Secure Payments: Utilizes VNPay payment service to ensure security and reliability during the payment process.
 - Clear Code List: Users can easily view and manage the list of purchased game codes.
-## Usage Guide
-1. Sign Up and Log In: Users need to register an account and log in to start the shopping process. 
-2. Select Product and Quantity: Browse the product list, choose the desired game code, and specify the quantity.
-3. Payment: Select the VNPay payment method and enter the necessary payment information.
-4. Receive Game Code: Immediately after successful payment, users will receive the game code in their account.
+
 ## Screenshots
 ![Main](https://i.imgur.com/9MrELOX.png)
 
