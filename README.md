@@ -30,7 +30,8 @@ To run this project, you will need to add the following environment variables to
 
 `vnp_Returnurl`: Change to your website url or localhost:port
 
-For more infomation: [Vnpay API](https://sandbox.vnpayment.vn/apis/)
+Explore additional information about the [payment API here](https://sandbox.vnpayment.vn/apis/). The provided link offers guidance and related documentation, providing a detailed insight into utilizing the payment APIs in the sandbox environment.
+
 
 ## License
 [MIT](https://opensource.org/license/mit/)
