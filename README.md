@@ -1,5 +1,6 @@
-
 ## About
+**This project was renamed from ``KeyShop``**
+
 
 KeyShop is an e-commerce project focused on providing automated game code purchases with seamless third-party payment using VNPay. The project is developed to simplify the online shopping process for gamers, delivering a convenient and fast shopping experience.
 
